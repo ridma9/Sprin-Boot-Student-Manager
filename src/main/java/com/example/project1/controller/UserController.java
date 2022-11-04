@@ -13,29 +13,31 @@ import java.util.List;
 @CrossOrigin
 public class UserController {
 
-
     @Autowired
     private UserService userService;
 
     @GetMapping("/getUsers")
-    public List<UserDto> GetMethod(){
+    public List<UserDto> getMethod(){
         return userService.getAllUsers();
     }
 
     @PostMapping("/postUser")
-    public UserDto CreateMethod(@RequestBody UserDto userDto){
+    public UserDto createMethod(@RequestBody UserDto userDto){
         return userService.saveUser(userDto);
     }
 
     @PutMapping("/putUser")
-    public UserDto UpdateMethod(@RequestBody UserDto userDto){
+    public UserDto updateMethod(@RequestBody UserDto userDto){
         return userService.updateUser(userDto);
     }
 
     @DeleteMapping("/deleteUser")
-    public boolean DeleteMethod(@RequestBody UserDto userDto){
+    public boolean deleteMethod(@RequestBody UserDto userDto){
         return userService.deleteUser(userDto);
     }
 
-
+    @GetMapping("/getUserByUserId/{userId}")
+    public UserDto getUserByUserId(@PathVariable String userId){
+        return userService.getUserByUserId(userId);
+    }
 }
