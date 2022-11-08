@@ -21,5 +21,6 @@ public class User {
     private int age;
     private int grade;
     private String stream;
+    private String gender;
 
 }

@@ -38,6 +38,13 @@
 </nav>
 <br>
 
+
+<div th:if=${session.msg}>
+  <div class="alert alert-success" role="alert" th:text="${session.msg}">
+  </div>
+
+</div>
+<br>
 <form th:action="@{/addStudent}" method="get">
 </form>
 
@@ -47,26 +54,26 @@
 <br>
 <div class="mr-5 ml-5 ">
 
-  <form>
+  <form th:action="@{/register}" method="post">
     <div class="form-row">
       <div class="col-md-6 mb-3">
         <label for="validationDefault01">First name</label>
-        <input type="text" class="form-control" id="validationDefault01"  required>
+        <input type="text" class="form-control" id="validationDefault01" name="firstName" required>
       </div>
       <div class="col-md-6 mb-3">
         <label for="validationDefault02">Last name</label>
-        <input type="text" class="form-control" id="validationDefault02"  required>
+        <input type="text" class="form-control" id="validationDefault02" name="lastName" required>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-3 mb-3">
         <label for="validationDefault05">Age</label>
-        <input type="text" class="form-control" id="validationDefault03" required>
+        <input type="text" class="form-control" id="validationDefault03" name="age" required>
       </div>
 
       <div class="col-md-3 mb-3">
-        <label for="validationDefault04">State</label>
-        <select class="custom-select" id="validationDefault04" required>
+        <label for="validationDefault04">Gender</label>
+        <select class="custom-select" id="validationDefault04" name="gender" required>
           <option selected disabled value="" required>Choose...</option>
           <option>Male</option>
           <option>Female</option>
@@ -74,19 +81,19 @@
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationDefault05">Grade</label>
-        <input type="text" class="form-control" id="validationDefault05" required>
+        <input type="text" class="form-control" id="validationDefault05" name="grade" required>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationDefault05">Stream</label>
-        <input type="text" class="form-control" id="validationDefault06" required>
+        <input type="text" class="form-control" id="validationDefault06" name="stream" required>
       </div>
       <div class="col-md-6 mb-3">
         <label for="validationDefault03">Address</label>
-        <input type="text" class="form-control" id="validationDefault07" required>
+        <input type="text" class="form-control" id="validationDefault07" name="userAddress" required>
       </div>
     </div>
 
-    <button class="btn btn-primary" type="submit">Submit form</button>
+    <button class="btn btn-primary" type="submit" >Submit form</button>
   </form>
 </div>
 

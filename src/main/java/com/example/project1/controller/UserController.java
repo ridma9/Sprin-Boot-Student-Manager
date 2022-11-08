@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +61,15 @@ public class UserController {
     }
     @GetMapping("/addStudent")
     public String addpage(){
+
         return "addStudent";
+    }
+
+    @PostMapping("/register")
+    public String registerStudent(@ModelAttribute UserDto userDto, HttpSession session){
+        userService.saveUser(userDto);
+        session.setAttribute("msg","Student added Successfully...");
+        return "redirect:/addStudent";
     }
 
 
