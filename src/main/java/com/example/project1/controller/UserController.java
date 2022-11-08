@@ -4,18 +4,20 @@ import com.example.project1.dto.UserDto;
 import com.example.project1.entity.User;
 import com.example.project1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-@RequestMapping("/controller")
+@Controller
 @CrossOrigin
 public class UserController {
 
-    @Autowired
+   @Autowired
     private UserService userService;
-
+/*
     @GetMapping("/getUsers")
     public List<UserDto> getMethod(){
         return userService.getAllUsers();
@@ -44,5 +46,22 @@ public class UserController {
     @GetMapping("/getUserByUserIdAndAddress/{userId}/{address}")
     public UserDto getUserByUserIdAndAddress(@PathVariable String userId, @PathVariable String address){
         return userService.getUserByUserIdAndAddress(userId,address);
+    }*/
+
+    @GetMapping("/home")
+    public String homepage(){
+        return "home";
     }
+    @GetMapping("/viewStudents")
+    public String viewpage(Model model){
+        List<UserDto> userList = userService.getAllUsers();
+        model.addAttribute("users", userList);
+        return "viewStudents";
+    }
+    @GetMapping("/addStudent")
+    public String addpage(){
+        return "addStudent";
+    }
+
+
 }

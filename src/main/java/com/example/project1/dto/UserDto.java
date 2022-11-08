@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 public class UserDto {
     private int userId;
-    private String userName;
+    private String firstName;
     private String userAddress;
+    private String lastName;
+    private int age;
+    private int grade;
+    private String stream;
 }
