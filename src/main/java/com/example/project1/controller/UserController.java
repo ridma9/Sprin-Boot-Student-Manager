@@ -61,7 +61,6 @@ public class UserController {
     }
     @GetMapping("/addStudent")
     public String addpage(){
-
         return "addStudent";
     }
 
@@ -70,6 +69,22 @@ public class UserController {
         userService.saveUser(userDto);
         session.setAttribute("msg","Student added Successfully...");
         return "redirect:/addStudent";
+    }
+
+    @GetMapping("/editStudent/{id}")
+    public String editPage(Model model, @PathVariable int id){
+        System.out.println("method works");
+        UserDto userDto= userService.getUserByUserId(String.valueOf(id));
+        model.addAttribute("user", userDto);
+        System.out.println("method works");
+        return "editStudent";
+    }
+
+    @PostMapping("/edit")
+    public String edit(@ModelAttribute UserDto userDto, HttpSession session){
+        userService.updateUser(userDto);
+        session.setAttribute("msg","Student edited Successfully...");
+        return "redirect:/viewStudents";
     }
 
 

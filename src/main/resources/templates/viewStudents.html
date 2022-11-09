@@ -37,9 +37,11 @@
   </div>
 </nav>
 <br>
-
-<form th:action="@{/viewsStudents}" method="get">
-</form>
+<div th:if=${session.msg}>
+  <div class="alert alert-success" role="alert" th:text="${session.msg}">
+  </div>
+  <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+</div>
 
 <div class=" display: flex mr-5 ml-5">
   <table class="table table-striped table-dark">
@@ -64,11 +66,9 @@
       <td th:text="${u.grade}"></td>
       <td th:text="${u.stream}"></td>
       <td th:text="${u.userAddress}"></td>
-      <td th:text="${u.userAddress}">
-<!--        <a>Edit</a>
-        <a>Delete</a>-->
-        <button type="button" class="btn btn-warning btn-sm">Edit</button>
-        <button type="button" class="btn btn-danger btn-sm">Delete</button>
+      <td>
+        <a class="btn btn-sm btn-warning" th:href="@{/editStudent/{id}(id=${u.userId})}">Edit</a>
+        <a class="btn btn-sm btn-danger" th:href="@{/}">Delete</a>
       </td>
 
     </tr>
