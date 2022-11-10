@@ -95,16 +95,12 @@ public class UserController {
     @PostMapping("/search")
     public String search(@ModelAttribute("firstName") String name, Model model,HttpSession session){
 
-/*        if (name.equals(null)) {
-            return "redirect:/viewStudents";
-        }*/
-
         UserDto user = userService.getUserByName(name);
 
-        if (user.equals(null)){
+        if (user.getFirstName()==null){
             System.out.println("method 1");
-            //session.setAttribute("msg","Student Not Found..");
-            return "home";
+            session.setAttribute("msg","Student Not Found..");
+            return "searchResults";
         }
 
         model.addAttribute("users", user);

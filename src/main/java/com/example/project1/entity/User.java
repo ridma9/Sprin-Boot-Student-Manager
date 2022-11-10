@@ -23,4 +23,17 @@ public class User {
     private String stream;
     private String gender;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", userAddress='" + userAddress + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", grade=" + grade +
+                ", stream='" + stream + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
 }

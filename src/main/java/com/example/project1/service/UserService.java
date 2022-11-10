@@ -50,7 +50,7 @@ public class UserService {
         if (user!=null){
             return modelMapper.map(user,UserDto.class);
         }else {
-            return null;
+            return new UserDto();
         }
 
     }
