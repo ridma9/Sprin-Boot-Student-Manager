@@ -73,10 +73,8 @@ public class UserController {
 
     @GetMapping("/editStudent/{id}")
     public String editPage(Model model, @PathVariable int id){
-        System.out.println("method works");
         UserDto userDto= userService.getUserByUserId(String.valueOf(id));
         model.addAttribute("user", userDto);
-        System.out.println("method works");
         return "editStudent";
     }
 
@@ -87,6 +85,31 @@ public class UserController {
         return "redirect:/viewStudents";
     }
 
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable int id, HttpSession session){
+        UserDto userDto = userService.getUserByUserId(String.valueOf(id));
+        userService.deleteUser(userDto);
+        return "redirect:/viewStudents";
+    }
+
+    @PostMapping("/search")
+    public String search(@ModelAttribute("firstName") String name, Model model,HttpSession session){
+
+/*        if (name.equals(null)) {
+            return "redirect:/viewStudents";
+        }*/
+
+        UserDto user = userService.getUserByName(name);
+
+        if (user.equals(null)){
+            System.out.println("method 1");
+            //session.setAttribute("msg","Student Not Found..");
+            return "home";
+        }
+
+        model.addAttribute("users", user);
+        return "searchResults";
+    }
 
 
 }

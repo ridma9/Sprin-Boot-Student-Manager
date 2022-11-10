@@ -24,6 +24,7 @@ public class UserService {
         userRepo.save(modelMapper.map(userDto, User.class));
         return userDto;
     }
+
     public List<UserDto> getAllUsers(){
         List<User> userList=userRepo.findAll();
         return modelMapper.map(userList,new TypeToken<List<UserDto>>(){}.getType());
@@ -44,8 +45,15 @@ public class UserService {
         return modelMapper.map(user,UserDto.class);
     }
 
-    public UserDto getUserByUserIdAndAddress(String userId, String address){
-        User user = userRepo.getUserByUserIdAndAddress(userId,address);
-        return modelMapper.map(user,UserDto.class);
+    public UserDto getUserByName(String name){
+        User user= userRepo.getUserByName(name);
+        if (user!=null){
+            return modelMapper.map(user,UserDto.class);
+        }else {
+            return null;
+        }
+
     }
+
+
 }

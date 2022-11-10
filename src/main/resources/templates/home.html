@@ -34,9 +34,10 @@
             </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search Student" aria-label="Search">
-            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+        <form class="form-inline my-2 my-lg-0" th:action="@{/search}"  method="post"> <!--th:object="${user}"-->>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search Student" aria-label="Search" name="firstName"> <!--th:field="*{firstName}"--> >
+            <button class="btn btn-primary my-2 my-sm-0" type="submit" >Search B</button>
+           <!-- <a class="btn btn-sm btn-primary" th:href="@{/search/{searchWord}}">Search</a>-->
         </form>
     </div>
 </nav>
